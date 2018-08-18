@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "dependencies": {
+    "moize": "^5.4.0"
+  }
+}

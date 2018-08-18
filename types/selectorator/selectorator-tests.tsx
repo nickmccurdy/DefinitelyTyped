@@ -1,7 +1,7 @@
 import moize from 'moize';
 import React from 'react';
 import { render } from 'react-dom';
-import createSelector from '../src/index';
+import createSelector from 'selectorator';
 
 
 const getSubtotal = createSelector(
