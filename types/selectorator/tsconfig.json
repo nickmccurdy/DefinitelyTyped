@@ -15,7 +15,8 @@
         "noEmit": true,
         "forceConsistentCasingInFileNames": true,
         "jsx": "preserve",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "strictFunctionTypes": true
     },
     "files": [
         "index.d.ts",

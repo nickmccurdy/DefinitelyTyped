@@ -5,7 +5,6 @@ import React from 'react';
 import { render } from 'react-dom';
 import createSelector from 'selectorator';
 
-
 const getSubtotal = createSelector(
   ['shop.items'],
   (items) => {
