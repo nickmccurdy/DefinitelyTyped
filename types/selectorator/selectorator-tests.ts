@@ -87,22 +87,11 @@ const third = ['blah'];
 
 console.log(getMultipleParams(first, second, third));
 
-try {
-  // $ExpectError
-  createSelector();
-} catch (error) {
-  console.error(error);
-}
+// $ExpectError
+createSelector();
 
-try {
-  createSelector([]);
-} catch (error) {
-  console.error(error);
-}
+// $ExpectError
+createSelector([]);
 
-try {
-  // $ExpectError
-  createSelector([true]);
-} catch (error) {
-  console.error(error);
-}
+// $ExpectError
+createSelector([true]);
