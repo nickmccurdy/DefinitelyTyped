@@ -14,12 +14,10 @@
         "types": [],
         "noEmit": true,
         "forceConsistentCasingInFileNames": true,
-        "jsx": "preserve",
-        "esModuleInterop": true,
         "strictFunctionTypes": true
     },
     "files": [
         "index.d.ts",
-        "selectorator-tests.tsx"
+        "selectorator-tests.ts"
     ]
 }

@@ -1,8 +1,6 @@
 // Based on https://github.com/planttheidea/selectorator/blob/master/DEV_ONLY/App.js
 // Copyright (c) 2016 Tony Quetano, MIT License
 import moize from 'moize';
-import React from 'react';
-import { render } from 'react-dom';
 import createSelector from 'selectorator';
 
 const getSubtotal = createSelector(
@@ -94,19 +92,3 @@ try {
 } catch (error) {
   console.error(error);
 }
-
-const App = () => {
-  return (
-    <div>
-      <h1>App</h1>
-    </div>
-  );
-};
-
-const div = document.createElement('div');
-
-div.id = 'app-container';
-
-render(<App />, div);
-
-document.body.appendChild(div);
