@@ -7,7 +7,7 @@ import createSelector from 'selectorator';
 const getSubtotal = createSelector(
   ['shop.items'],
   (items) => {
-    return items.reduce((sum, {value}) => {
+    return items.reduce((sum: number, {value}: {value: number}) => {
       return sum + value;
     }, 0);
   },
@@ -89,19 +89,7 @@ const third = ['blah'];
 console.log(getMultipleParams(first, second, third));
 
 try {
-  createSelector();
-} catch (error) {
-  console.error(error);
-}
-
-try {
   createSelector([]);
-} catch (error) {
-  console.error(error);
-}
-
-try {
-  createSelector([true]);
 } catch (error) {
   console.error(error);
 }

@@ -1,39 +1,25 @@
 // Type definitions for selectorator 3.3
 // Project: https://github.com/planttheidea/selectorator#readme
-// Definitions by: My Self <https://github.com/me>
+// Definitions by: Nick McCurdy <https://github.com/nickmccurdy>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-/*~ If this module is a UMD module that exposes a global variable 'myLib' when
- *~ loaded outside a module loader environment, declare that global here.
- *~ Otherwise, delete this declaration.
- */
-export as namespace myLib;
+import { deepEqual } from "fast-equals";
+import { OutputSelector, Selector } from "reselect";
 
-/*~ If this module has methods, declare them as functions like so.
- */
-export function myMethod(a: string): string;
-export function myOtherMethod(a: number): number;
+export as namespace selectorator;
 
-/*~ You can declare types that are available via importing the module */
-export interface someType {
-    name: string;
-    length: number;
-    extras?: string[];
+type Path<S, R> = Selector<S, R> | string | number | Array<string | number>;
+type ArgumentPath<S, R> = Path<S, R> | { path: Path<S, R>; argIndex: number };
+
+interface Options<O extends any[] = any[]> {
+    deepEqual: boolean;
+    isEqual: typeof deepEqual;
+    memoizer: <F extends (...options: O) => any>(func: F, ...options: O) => F;
+    memoizerParams: O;
 }
 
-/*~ You can declare properties of the module using const, let, or var */
-export const myField: number;
-
-/*~ If there are types, properties, or methods inside dotted names
- *~ of the module, declare them inside a 'namespace'.
- */
-export namespace subProp {
-    /*~ For example, given this definition, someone could write:
-     *~   import { subProp } from 'yourModule';
-     *~   subProp.foo();
-     *~ or
-     *~   import * as yourMod from 'yourModule';
-     *~   yourMod.subProp.foo();
-     */
-    export function foo(): void;
-}
+export default function createSelector<S, R extends any[], T>(
+    paths: [...ArgumentPath<S, R>[]] | Record<string, ArgumentPath<S, R>>,
+    getComputedValue?: (...results: R) => T,
+    options?: Partial<Options>
+): OutputSelector<S, T, (...results: R) => T>;

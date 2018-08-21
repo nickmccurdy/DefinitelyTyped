@@ -1,6 +1,8 @@
 {
   "private": true,
   "dependencies": {
-    "moize": "^5.4.0"
+    "fast-equals": "^1.6.0",
+    "moize": "^5.4.0",
+    "reselect": "^3.0.1"
   }
 }
