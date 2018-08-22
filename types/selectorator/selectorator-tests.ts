@@ -28,9 +28,12 @@ const state = {
   }
 };
 
-console.log('subtotal: ', getSubtotal(state));
-console.log('tax: ', getTax(state));
-console.log('total: ', getTotal(state));
+// $ExpectType number
+getSubtotal(state);
+// $ExpectType number
+getTax(state);
+// $ExpectType number
+getTotal(state);
 
 const getFlattedState = createSelector({
   items: 'shop.items',
@@ -39,7 +42,8 @@ const getFlattedState = createSelector({
   total: getTotal
 });
 
-console.log('structured state', getFlattedState(state));
+// $ExpectType { items: { name: string, value: number }[], subtotal: number, tax: number, total: number }
+getFlattedState(state);
 
 const getFoo = createSelector(
   ['foo'],
@@ -53,20 +57,21 @@ const getFoo = createSelector(
   }
 );
 
-console.log('using serializer', getFoo({foo: 'baz'}));
-console.log(getFoo({foo: 'baz'}));
+// $ExpectType { bar: 'baz'; }
+getFoo({foo: 'baz'});
+// $ExpectType { bar: 'baz'; }
+getFoo({foo: 'baz'});
 
 const getIdentity = createSelector(['foo.bar.baz[0]']);
 
-console.log(
-  getIdentity({
-    foo: {
-      bar: {
-        baz: ['foo']
-      }
+// $ExpectType 'foo'
+getIdentity({
+  foo: {
+    bar: {
+      baz: ['foo']
     }
-  })
-);
+  }
+});
 
 const getMultipleParams = createSelector(
   ['foo.bar', {path: 'baz', argIndex: 1}, {path: 0, argIndex: 2}],
@@ -85,7 +90,8 @@ const second = {
 };
 const third = ['blah'];
 
-console.log(getMultipleParams(first, second, third));
+// $ExpectType ['baz', 'quz', 'blah']
+getMultipleParams(first, second, third);
 
 // $ExpectError
 createSelector();
