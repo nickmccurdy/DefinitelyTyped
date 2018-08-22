@@ -25,7 +25,7 @@ export interface Options<O extends any[] = any[]> {
 }
 
 export default function createSelector<S, R extends any[], T>(
-  paths: [...Array<ArgumentPath<S, R>>] | Record<string, ArgumentPath<S, R>>,
+  paths: Array<ArgumentPath<S, R>> | Record<string, ArgumentPath<S, R>>,
   getComputedValue?: (...results: R) => T,
   options?: Partial<Options>
 ): OutputSelector<S, T, (...results: R) => T>;
